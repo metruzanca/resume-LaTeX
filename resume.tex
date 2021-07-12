@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\ 
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
+
+}
+
+\newenvironment{resume_work_bullets}{
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+\name{Samuele Zanca}
+\program{Full-Stack Developer}
+\contact{\href{mailto:samuele@zanca.dev}{samuele@zanca.dev} \hspace{1cm} +1 (201)706-7528  \hspace{1cm}\href{http://github.com/metruzanca}{github.com/metruzanca} \hspace{1cm} \href{https://www.linkedin.com/in/samuelz/}{linkedin.com/in/samuelz}} 
+\end{resume_header}
+
+\begin{resume_section}{Work Experience}
+  \begin{resume_employer}{DecHit}{Full-Stack Developer \& Techlead}{}{11/2/20 - present}
+    \begin{resume_work_bullets}
+        \item Instructor for DecHit React Academy. Designed lesson projects to make the trainees learn by doing, then over iterations with code reviews and new features to implement I got them up to speed with Nodejs, React \& Redux.
+        \item Lead a Team of 4 developers using the MERN stack to develop a microservice based application.
+        \item Implemented CI/CD Pipelines using Gitlab, Jenkins, Docker and Kubernetes.
+        \item Maintained and improved an Angular2+ application, reducing code complexity and duplication, resulting in faster development and easier integration with the Java Backend team.
+        \item Maintained a Legacy React Cordova app while introducing greater testing and best practices to facilitate a transition to React Native for client Sisal SpA.
+    \end{resume_work_bullets}
+  \end{resume_employer}
+  \begin{resume_employer}{Mia-Platform}{Full-Stack Developer}{}{07/8/20 - 10/16/20}
+    \begin{resume_work_bullets}
+        \item Worked on a cross-functional team, BURTON, to develop and deploy API, web dashboards and native mobile apps for a B2B client \href{https://www.foorban.com}{Foorban Srl}.
+        \item Developed a microservice in Kotlin using the Ktor framework, Jackson and Retrofit2 following the BFF and Saga patterns.
+        \item Developed two React dashboards using data from the previously mentioned kotlin API and Mia's custom CMS.
+        \item Developed a PDF Microservice that allows the use of HTML as a familiar DSL for creating Shipping labels, receipts and custom size invoices.
+        \item Prototyped a React app for live previewing of the PDFs using the \href{https://github.com/microsoft/monaco-editor}{Monaco-Editor}.
+    \end{resume_work_bullets}
+  \end{resume_employer}
+
+  \begin{resume_employer}{TXT e-Solutions}{Software Engineer - Aerospace \& Defence}{}{09/15/19 - 07/8/20}
+    \begin{resume_work_bullets}
+        \item Acted as a point of reference/mentor for developers learning: Nodejs, React.js, Redux.js \& Typescript.
+        \item Reduced all future bugs by 15\% by adopting Typescript and helping coworkers get up to speed.
+        \item Lead the development of a React/Typescript web control panel for operating Flight Simulators via remotely via tablet for \href{https://www.leonardocompany.com/en/home}{Leonardo SpA}.
+        \item Maintained c\# two Xamarin Mobile apps used by \href {https://www.itt.com/home}{ITT Inc} in Automotive industry for collecting diagnostic break data transfered over wifi and low power bluetooth.
+        \item Developed a c\# app for collecting and processing flight data to reduce fuel costs in collaboration with \href{http://pace.txtgroup.com/products/flight-operations/pacelab-flight-profile-optimizer/}{IATA}.
+        \item Developed a c\# WPF Simulator for training the proper use of the \href{https://www.elt-roma.com/product/adrian}{ADRIAN} system.
+    \end{resume_work_bullets}
+  \end{resume_employer}
+  
+\end{resume_section}
+
+\begin{resume_section}{Personal Projects}
+    \begin{resume_subsection}{Open Source: Nighttab Browser Extension [{\href{https://chrome.google.com/webstore/detail/nighttab/hdpcadigjkbcpnlcpbcohpafiaefanki}{chrome webstore}]}}
+    \begin{subitems}
+    \item Co-Maintainer of Nighttab, a productivity tool for bookmark management, currently serving {\raise.17ex\hbox{$\scriptstyle\sim$}}5K users.
+    \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\begin{resume_section}{Skills}
+  JavaScript/Typescript, React, React Native, Redux, REST, HTML/CSS/SASS, Nodejs, Express/Fastify, C\#, Java, Kotlin, Ktor, gRPC, GraphQL, MySql, SQL, MongoDB, Firebase, Linux, Docker, Kubectl, Serverless, GCP
+\end{resume_section}
+
+\begin{resume_section}{Certifications}
+  \begin{resume_subsection}[]{Cisco CCNA (networking)}
+    \begin{subitems}
+      \item Network fundamentals, network access, IP connectivity, IP services, security fundamentals, and automation.
+    \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\end{document}
