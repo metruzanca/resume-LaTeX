@@ -1,0 +1,14 @@
+{
+	"Work Experience Entry": {
+		"prefix": "job",
+		"body": [
+			"% ${1:Employer Name}",
+			"  \\begin{resume_employer}{${1:Employer Name}}{${2:Job Title}}{}{${3:Start date} - ${4:End-Date or Present}}",
+			"    \\begin{resume_work_bullets}",
+			"        \\item Bullet points here...",
+			"    \\end{resume_work_bullets}",
+			"  \\end{resume_employer}"
+		],
+		"description": "Work Experience Entry"
+	}
+}
